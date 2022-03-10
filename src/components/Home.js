@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Categories from './Categories';
 import Header from './Header';
 
 class Home extends Component {
@@ -6,6 +7,7 @@ class Home extends Component {
     return (
       <section>
         <Header />
+        <Categories />
         <div>
           <p data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
