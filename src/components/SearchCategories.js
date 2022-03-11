@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCategories } from '../services/api';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import Search from './Search';
 
 class SearchCategories extends Component {
@@ -9,6 +9,7 @@ class SearchCategories extends Component {
     this.state = {
       categories: [],
       id: '',
+      list: [],
     };
   }
 
@@ -17,12 +18,13 @@ class SearchCategories extends Component {
     this.setState({ categories: listOfCategories });
   }
 
-  handleChange = ({ target: { value } }) => {
-    this.setState({ id: value });
+  handleChange = async ({ target: { value } }) => {
+    const response = await getProductsFromCategoryAndQuery(value, undefined);
+    this.setState({ id: value, list: response.results });
   }
 
   render() {
-    const { categories, id } = this.state;
+    const { categories, id, list } = this.state;
     return (
       <section>
         <div>
@@ -44,7 +46,7 @@ class SearchCategories extends Component {
           ))}
         </div>
         <div>
-          <Search categoryId={ id } />
+          <Search categoryId={ id } listSearch={ list } />
         </div>
       </section>
     );
