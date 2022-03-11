@@ -8,7 +8,7 @@ class Search extends Component {
 
     this.state = {
       searchValue: '',
-      listSearch: [],
+      listCompleteSearch: [],
     };
   }
 
@@ -19,12 +19,36 @@ class Search extends Component {
   handleClick = async () => {
     const { searchValue } = this.state;
     const { categoryId } = this.props;
-    const response = await getProductsFromCategoryAndQuery(categoryId, searchValue);
-    this.setState({ listSearch: response.results });
+    if (categoryId) {
+      const response = await getProductsFromCategoryAndQuery(categoryId, searchValue);
+      this.setState({ listCompleteSearch: response.results });
+    } if (!categoryId) {
+      const response = await getProductsFromCategoryAndQuery(undefined, searchValue);
+      this.setState({ listCompleteSearch: response.results });
+    }
+  }
+
+  makeCard = (list) => list.map(({ id, title, thumbnail, price }) => (
+    <div data-testid="product" key={ id }>
+      <p>{ title }</p>
+      <img src={ thumbnail } alt={ title } />
+      <p>{ price }</p>
+    </div>
+  ))
+
+  checkComplete = () => {
+    const { listCompleteSearch } = this.state;
+    const { listSearch } = this.props;
+    if (listCompleteSearch.length === 0 && listSearch.length > 0) {
+      return (this.makeCard(listSearch));
+    } if (listCompleteSearch.length > 0) {
+      return (this.makeCard(listCompleteSearch));
+    }
+    return <p>Nenhum produto foi encontrado</p>;
   }
 
   render() {
-    const { searchValue, listSearch } = this.state;
+    const { searchValue } = this.state;
     return (
       <div>
         <input
@@ -40,21 +64,15 @@ class Search extends Component {
         >
           Pesquisar
         </button>
-        {listSearch.length > 0
-          ? (listSearch.map(({ id, title, thumbnail, price }) => (
-            <div data-testid="product" key={ id }>
-              <p>{ title }</p>
-              <img src={ thumbnail } alt={ title } />
-              <p>{ price }</p>
-            </div>
-          ))) : <p>Nenhum produto foi encontrado</p>}
+        {this.checkComplete()}
       </div>
     );
   }
 }
 
 Search.propTypes = {
-  categoryId: PropTypes.string.isRequired,
-};
+  categoryId: PropTypes.string,
+  listSearch: PropTypes.arrayOf(PropTypes.shape),
+}.isRequired;
 
 export default Search;
