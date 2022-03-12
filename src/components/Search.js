@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class Search extends Component {
@@ -29,16 +30,24 @@ class Search extends Component {
   }
 
   makeCard = (list) => list.map(({ id, title, thumbnail, price }) => (
-    <div data-testid="product" key={ id }>
-      <p>{ title }</p>
-      <img src={ thumbnail } alt={ title } />
-      <p>{ price }</p>
-    </div>
+    <Link
+      key={ id }
+      to={ `/carddetails/${id}` }
+    >
+      <div data-testid="product-detail-link">
+        <div data-testid="product">
+          <p>{ title }</p>
+          <img src={ thumbnail } alt={ title } />
+          <p>{ price }</p>
+        </div>
+      </div>
+    </Link>
   ))
 
   checkComplete = () => {
     const { listCompleteSearch } = this.state;
     const { listSearch } = this.props;
+    console.log(listSearch);
     if (listCompleteSearch.length === 0 && listSearch.length > 0) {
       return (this.makeCard(listSearch));
     } if (listCompleteSearch.length > 0) {
