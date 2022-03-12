@@ -34,10 +34,12 @@ class Search extends Component {
       key={ id }
       to={ `/carddetails/${id}` }
     >
-      <div data-testid="product">
-        <p>{ title }</p>
-        <img src={ thumbnail } alt={ title } />
-        <p>{ price }</p>
+      <div data-testid="product-detail-link">
+        <div data-testid="product">
+          <p>{ title }</p>
+          <img src={ thumbnail } alt={ title } />
+          <p>{ price }</p>
+        </div>
       </div>
     </Link>
   ))
