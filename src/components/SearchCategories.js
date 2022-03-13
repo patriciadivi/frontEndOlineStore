@@ -3,7 +3,7 @@ import {
   getCategories,
   getProductsFromCategoryAndQuery,
 } from '../services/api';
-import Search from './Search';
+import Search from './SearchBar';
 
 class SearchCategories extends Component {
   constructor() {
@@ -30,7 +30,7 @@ class SearchCategories extends Component {
     const { categories, id, list } = this.state;
     return (
       <section>
-        <div className="search-bar-container">
+        <div className="search-categories-container">
           <Search categoryId={ id } listSearch={ list } />
         </div>
         <div className="sidebar">

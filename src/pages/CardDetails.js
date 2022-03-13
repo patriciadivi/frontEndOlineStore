@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getProductsFromId } from '../services/api';
+import SearchCategories from '../components/SearchCategories';
 
 class CardDetails extends Component {
   constructor() {
@@ -31,17 +32,21 @@ class CardDetails extends Component {
     const { product, attributes } = this.state;
     const { title, thumbnail, price } = product;
     return (
-      <section datatestid="product-detail-link">
-        <h1 data-testid="product-detail-name">{`${title} - R$${price}`}</h1>
-        <img src={ thumbnail } alt={ title } />
-        <ul>
-          {attributes.map(({ name, value }) => (
-            <li key={ name } datatestid="product-detail-name">
-              {`${name} - ${value}`}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <div className="details-container">
+        <SearchCategories />
+        <section datatestid="product-detail-link">
+          <h1 data-testid="product-detail-name">{`${title} - R$${price}`}</h1>
+          <img src={ thumbnail } alt={ title } />
+          <ul>
+            {attributes.map(({ name, value }) => (
+              <li key={ name } datatestid="product-detail-name">
+                {`${name} - ${value}`}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
-class Search extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props);
 
@@ -64,7 +64,7 @@ class Search extends Component {
   render() {
     const { searchValue } = this.state;
     return (
-      <div>
+      <div className="search-bar">
         <input
           className="text-input"
           type="text"
@@ -86,9 +86,9 @@ class Search extends Component {
   }
 }
 
-Search.propTypes = {
+SearchBar.propTypes = {
   categoryId: PropTypes.string,
   listSearch: PropTypes.arrayOf(PropTypes.shape),
 }.isRequired;
 
-export default Search;
+export default SearchBar;
