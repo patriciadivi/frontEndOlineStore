@@ -8,10 +8,9 @@ class Header extends Component {
         <main>
           <Link
             data-testid="shopping-cart-button"
-            to="/shoppingCard"
-            path="../pages/ShoppingCard"
+            to="/shoppingcart"
           >
-            Card
+            Cart
           </Link>
         </main>
       </header>

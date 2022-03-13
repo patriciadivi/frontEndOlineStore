@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ShoppingCard extends Component {
+class ShoppingCart extends Component {
   render() {
     return (
       <section>
@@ -10,4 +10,4 @@ class ShoppingCard extends Component {
   }
 }
 
-export default ShoppingCard;
+export default ShoppingCart;

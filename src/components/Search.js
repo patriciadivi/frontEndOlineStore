@@ -15,46 +15,51 @@ class Search extends Component {
 
   handleChange = ({ target: { value } }) => {
     this.setState({ searchValue: value });
-  }
+  };
 
   handleClick = async () => {
     const { searchValue } = this.state;
     const { categoryId } = this.props;
     if (categoryId) {
-      const response = await getProductsFromCategoryAndQuery(categoryId, searchValue);
-      this.setState({ listCompleteSearch: response.results });
-    } if (!categoryId) {
-      const response = await getProductsFromCategoryAndQuery(undefined, searchValue);
-      this.setState({ listCompleteSearch: response.results });
+      const { results } = await getProductsFromCategoryAndQuery(
+        categoryId,
+        searchValue,
+      );
+      this.setState({ listCompleteSearch: results });
     }
-  }
+    if (!categoryId) {
+      const { results } = await getProductsFromCategoryAndQuery(
+        undefined,
+        searchValue,
+      );
+      this.setState({ listCompleteSearch: results });
+    }
+  };
 
   makeCard = (list) => list.map(({ id, title, thumbnail, price }) => (
-    <Link
-      key={ id }
-      to={ `/carddetails/${id}` }
-    >
+    <Link key={ id } to={ `/carddetails/${id}` }>
       <div data-testid="product-detail-link">
         <div data-testid="product">
-          <p>{ title }</p>
+          <p>{title}</p>
           <img src={ thumbnail } alt={ title } />
-          <p>{ price }</p>
+          <p>{price}</p>
         </div>
       </div>
     </Link>
-  ))
+  ));
 
   checkComplete = () => {
     const { listCompleteSearch } = this.state;
     const { listSearch } = this.props;
     console.log(listSearch);
     if (listCompleteSearch.length === 0 && listSearch.length > 0) {
-      return (this.makeCard(listSearch));
-    } if (listCompleteSearch.length > 0) {
-      return (this.makeCard(listCompleteSearch));
+      return this.makeCard(listSearch);
+    }
+    if (listCompleteSearch.length > 0) {
+      return this.makeCard(listCompleteSearch);
     }
     return <p>Nenhum produto foi encontrado</p>;
-  }
+  };
 
   render() {
     const { searchValue } = this.state;
