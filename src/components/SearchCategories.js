@@ -19,8 +19,8 @@ class SearchCategories extends Component {
   }
 
   handleChange = async ({ target: { value } }) => {
-    const response = await getProductsFromCategoryAndQuery(value, undefined);
-    this.setState({ id: value, list: response.results });
+    const { results } = await getProductsFromCategoryAndQuery(value, undefined);
+    this.setState({ id: value, list: results });
   }
 
   render() {
@@ -28,20 +28,20 @@ class SearchCategories extends Component {
     return (
       <section>
         <div>
-          {categories.map((element) => (
+          {categories.map((category) => (
             <label
-              htmlFor={ element.id }
-              key={ element.name }
+              htmlFor={ category.id }
+              key={ category.name }
               data-testid="category"
             >
               <input
-                id={ element.id }
-                value={ element.id }
+                id={ category.id }
+                value={ category.id }
                 type="radio"
                 name="category"
                 onChange={ this.handleChange }
               />
-              { element.name }
+              { category.name }
             </label>
           ))}
         </div>
