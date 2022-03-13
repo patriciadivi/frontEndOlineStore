@@ -66,12 +66,14 @@ class Search extends Component {
     return (
       <div>
         <input
+          className="text-input"
           type="text"
           data-testid="query-input"
           value={ searchValue }
           onChange={ this.handleChange }
         />
         <button
+          className="button"
           type="button"
           data-testid="query-button"
           onClick={ this.handleClick }

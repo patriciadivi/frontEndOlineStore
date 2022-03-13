@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  background-color: black;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: white;
+  padding: 0.3rem 1rem;
+}
+
+.text-input {
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding: 0.3rem;
+}
