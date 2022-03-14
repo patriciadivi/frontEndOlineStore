@@ -1,3 +1,48 @@
 .App {
   text-align: center;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-categories-container {
+  display: flex;
+  justify-content: center;
+  width: 25vw;
+}
+
+.button {
+  background-color: black;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: white;
+  margin-top: 1.5rem;
+  padding: 0.3rem 1rem;
+}
+
+.text-input {
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.3rem;
+}
+
+.cart-icon {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+}
+
+.details-container {
+  display: flex;
+}
+
+.search-bar {
+  width: 100%;
+}
+
+.results-container {
+  display: flex;
+}

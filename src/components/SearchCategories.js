@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
-import Search from './Search';
+import {
+  getCategories,
+  getProductsFromCategoryAndQuery,
+} from '../services/api';
+import Search from './SearchBar';
 
 class SearchCategories extends Component {
   constructor() {
@@ -21,13 +24,16 @@ class SearchCategories extends Component {
   handleChange = async ({ target: { value } }) => {
     const { results } = await getProductsFromCategoryAndQuery(value, undefined);
     this.setState({ id: value, list: results });
-  }
+  };
 
   render() {
     const { categories, id, list } = this.state;
     return (
       <section>
-        <div>
+        <div className="search-categories-container">
+          <Search categoryId={ id } listSearch={ list } />
+        </div>
+        <div className="sidebar">
           {categories.map((category) => (
             <label
               htmlFor={ category.id }
@@ -41,12 +47,9 @@ class SearchCategories extends Component {
                 name="category"
                 onChange={ this.handleChange }
               />
-              { category.name }
+              {category.name}
             </label>
           ))}
-        </div>
-        <div>
-          <Search categoryId={ id } listSearch={ list } />
         </div>
       </section>
     );
