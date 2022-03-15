@@ -1,90 +1,72 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getProductsFromId } from '../services/api';
 import Header from '../components/Header';
 
 class ShoppingCart extends Component {
   constructor(props) {
     super(props);
-    const { location: {
-      state: { shoppingCartList },
-    } } = this.props;
-    this.state = ({
-      shoppingCartList,
-      cartList: [],
-      productQuantity: [],
+
+    this.state = {
+      finalProductList: [],
+    };
+  }
+
+  renderCart = (listRender) => (
+    listRender.map((element) => (
+      <div key={ element.title }>
+        <img src={ element.thumbnail } alt={ element.title } />
+        <p
+          data-testid="shopping-cart-product-name"
+        >
+          {element.title}
+        </p>
+        <p
+          data-testid="shopping-cart-product-quantity"
+        >
+          {element.trybeCount}
+        </p>
+      </div>
+    ))
+  );
+
+  setParams = (listId, listObj) => {
+    const finalList = [];
+    listId.forEach((element) => {
+      const count = listObj.filter((item) => item.id === element).length;
+      const matchObj = listObj.find((obj) => obj.id === element);
+      if (matchObj !== undefined) {
+        matchObj.trybeCount = count;
+        finalList.push(matchObj);
+      }
     });
+    const uniqueFinalList = finalList.filter(
+      (product, index) => finalList.indexOf(product) === index,
+    );
+    return uniqueFinalList;
   }
 
-  componentDidMount() {
-    this.fetchProduct();
+  makeList = (finalList) => {
+    const { shoppingListId, shoppingProductObjs } = this.props;
+    if (finalList.length > 0) {
+      return this.renderCart(finalList);
+    } if (finalList.length === 0) {
+      const listReturn = this.setParams(shoppingListId, shoppingProductObjs);
+      if (listReturn.length > 0) {
+        return this.renderCart(listReturn);
+      }
+      return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
+    }
   }
-
-  fetchProduct = () => {
-    const { shoppingCartList } = this.state;
-    shoppingCartList.forEach(async (productId) => {
-      const requestReturn = await getProductsFromId(productId);
-      this.setState((prevState) => (
-        { cartList: [...prevState.cartList, requestReturn] }), this.countItens());
-    });
-  }
-
-  countItens = () => {
-    const { shoppingCartList, cartList } = this.state;
-    console.log('1', shoppingCartList, '2', cartList);
-    shoppingCartList.forEach((element) => {
-      const matches = cartList.forEach((item) => {
-        if (item.id === element && item.trybeCount !== undefined) {
-          this.setState((prevState) => (
-            { productQuantity: [...prevState.productQuantity, item.trybeCount += 1] }));
-        } if (item.id === element && item.trybeCount === undefined) {
-          this.setState((prevState) => (
-            { productQuantity: [...prevState.productQuantity, trybeCount = 1] }));
-        }
-      });
-      console.log(matches);
-    });
-  }
-
-  // countItens = (list) => {
-  // const array = [0, 1, 2, 0, 4, 2, 6];
-  // const newArray = [{
-  //   id,
-  //   contador,
-  // }
-  // ]; 
-  //   for (let index = 0; index < list.length; index += 1) {
-
-  //     for (let index2 = 0; index2 < list.length; index += 1) {
-  //       if( list[index] === list[index2])
-
-  //     }
-  //   }
-  // }
 
   render() {
-    const { cartList } = this.state;
+    const { shoppingListId, shoppingProductObjs } = this.props;
+    const { finalProductList } = this.state;
     return (
       <div>
         <Header />
         <section>
-          {cartList.length > 0
-            ? cartList.map((element) => (
-              <div key={ element.title }>
-                <img src={ element.thumbnail } alt={ element.title } />
-                <p
-                  data-testid="shopping-cart-product-name"
-                >
-                  {element.title}
-                </p>
-                <p
-                  data-testid="shopping-cart-product-quantity"
-                >
-                  {element.available_quantity}
-                </p>
-              </div>
-            ))
-            : <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>}
+          {shoppingListId.length === shoppingProductObjs.length
+            && this.makeList(finalProductList)}
         </section>
       </div>
     );

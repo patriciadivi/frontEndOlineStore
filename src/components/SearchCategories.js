@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   getCategories,
   getProductsFromCategoryAndQuery,
@@ -23,7 +24,15 @@ class SearchCategories extends Component {
     this.setState({ categories: listOfCategories });
   }
 
-  addToCart = (item) => {
+  componentWillUnmount() {
+    const { makeListId } = this.props;
+    const { shoppingCartList } = this.state;
+    if (typeof (makeListId) === 'function') {
+      makeListId(shoppingCartList);
+    }
+  }
+
+  addToCart = async (item) => {
     this.setState((prevState) => (
       { shoppingCartList: [...prevState.shoppingCartList, item] }));
   }
@@ -34,10 +43,10 @@ class SearchCategories extends Component {
   };
 
   render() {
-    const { categories, id, list, shoppingCartList } = this.state;
+    const { categories, id, list } = this.state;
     return (
       <div>
-        <Header shoppingCartList={ shoppingCartList } />
+        <Header />
         <section>
           <div className="search-categories-container">
             <SearchBar
@@ -69,5 +78,9 @@ class SearchCategories extends Component {
     );
   }
 }
+
+SearchCategories.propTypes = {
+  makeListId: PropTypes.func,
+}.isRequired;
 
 export default SearchCategories;
