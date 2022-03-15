@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   getCategories,
   getProductsFromCategoryAndQuery,
 } from '../services/api';
-import Search from './SearchBar';
+import SearchBar from './SearchBar';
+import Header from './Header';
 
 class SearchCategories extends Component {
   constructor() {
@@ -13,12 +15,26 @@ class SearchCategories extends Component {
       categories: [],
       id: '',
       list: [],
+      shoppingCartList: [],
     };
   }
 
   async componentDidMount() {
     const listOfCategories = await getCategories();
     this.setState({ categories: listOfCategories });
+  }
+
+  componentWillUnmount() {
+    const { makeListId } = this.props;
+    const { shoppingCartList } = this.state;
+    if (typeof (makeListId) === 'function') {
+      makeListId(shoppingCartList);
+    }
+  }
+
+  addToCart = async (item) => {
+    this.setState((prevState) => (
+      { shoppingCartList: [...prevState.shoppingCartList, item] }));
   }
 
   handleChange = async ({ target: { value } }) => {
@@ -29,31 +45,42 @@ class SearchCategories extends Component {
   render() {
     const { categories, id, list } = this.state;
     return (
-      <section>
-        <div className="search-categories-container">
-          <Search categoryId={ id } listSearch={ list } />
-        </div>
-        <div className="sidebar">
-          {categories.map((category) => (
-            <label
-              htmlFor={ category.id }
-              key={ category.name }
-              data-testid="category"
-            >
-              <input
-                id={ category.id }
-                value={ category.id }
-                type="radio"
-                name="category"
-                onChange={ this.handleChange }
-              />
-              {category.name}
-            </label>
-          ))}
-        </div>
-      </section>
+      <div>
+        <Header />
+        <section>
+          <div className="search-categories-container">
+            <SearchBar
+              addToCart={ this.addToCart }
+              categoryId={ id }
+              listSearch={ list }
+            />
+          </div>
+          <div className="sidebar">
+            {categories.map((category) => (
+              <label
+                htmlFor={ category.id }
+                key={ category.name }
+                data-testid="category"
+              >
+                <input
+                  id={ category.id }
+                  value={ category.id }
+                  type="radio"
+                  name="category"
+                  onChange={ this.handleChange }
+                />
+                {category.name}
+              </label>
+            ))}
+          </div>
+        </section>
+      </div>
     );
   }
 }
+
+SearchCategories.propTypes = {
+  makeListId: PropTypes.func,
+}.isRequired;
 
 export default SearchCategories;
