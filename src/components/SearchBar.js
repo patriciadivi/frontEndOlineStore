@@ -36,13 +36,7 @@ class SearchBar extends Component {
     }
   };
 
-  btnAddToCart = (event) => {
-    const { value } = event.target;
-    const { addToCart } = this.props;
-    addToCart(value);
-  }
-
-  makeCard = (list) => list.map(({ id, title, thumbnail, price }) => (
+  makeCard = (list, funcAdd) => list.map(({ id, title, thumbnail, price }) => (
     <div key={ id }>
       <Link to={ `/carddetails/${id}` }>
         <div data-testid="product-detail-link">
@@ -57,29 +51,30 @@ class SearchBar extends Component {
         <button
           data-testid="product-add-to-cart"
           type="button"
-          onClick={ this.btnAddToCart }
+          onClick={ funcAdd }
           value={ id }
         >
           add ao carrinho
         </button>
       </div>
     </div>
-  ));
+  ))
 
-  checkComplete = () => {
+  checkComplete = (func) => {
     const { listCompleteSearch } = this.state;
     const { listSearch } = this.props;
     if (listCompleteSearch.length === 0 && listSearch.length > 0) {
-      return this.makeCard(listSearch);
+      return this.makeCard(listSearch, func);
     }
     if (listCompleteSearch.length > 0) {
-      return this.makeCard(listCompleteSearch);
+      return this.makeCard(listCompleteSearch, func);
     }
     return <p>Nenhum produto foi encontrado</p>;
   };
 
   render() {
     const { searchValue } = this.state;
+    const { btnAddToCart } = this.props;
     return (
       <div className="search-bar">
         <input
@@ -97,7 +92,7 @@ class SearchBar extends Component {
         >
           Pesquisar
         </button>
-        {this.checkComplete()}
+        {this.checkComplete(btnAddToCart)}
       </div>
     );
   }
