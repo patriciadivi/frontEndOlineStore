@@ -11,8 +11,20 @@ class ShoppingCart extends Component {
     };
   }
 
+  validateIncrement = (i, list) => {
+    list[i].trybeCount += 1;
+    this.setState({ finalProductList: list });
+  }
+
+  validateDecrement = (i, list) => {
+    if (list[i].trybeCount > 0) {
+      list[i].trybeCount -= 1;
+    }
+    this.setState({ finalProductList: list });
+  }
+
   renderCart = (listRender) => (
-    listRender.map((element) => (
+    listRender.map((element, i) => (
       <div key={ element.title }>
         <img src={ element.thumbnail } alt={ element.title } />
         <p
@@ -25,6 +37,28 @@ class ShoppingCart extends Component {
         >
           {element.trybeCount}
         </p>
+        <button
+          data-testid="product-decrease-quantity"
+          value="-"
+          type="button"
+          onClick={ () => this.validateDecrement(i, listRender) }
+        >
+          {' '}
+          -
+          {' '}
+
+        </button>
+        <button
+          data-testid="product-increase-quantity"
+          value="+"
+          type="button"
+          onClick={ () => this.validateIncrement(i, listRender) }
+        >
+          {' '}
+          +
+          {' '}
+
+        </button>
       </div>
     ))
   );
@@ -32,10 +66,10 @@ class ShoppingCart extends Component {
   setParams = (listId, listObj) => {
     const finalList = [];
     listId.forEach((element) => {
-      const count = listObj.filter((item) => item.id === element).length;
+      // const count = listObj.filter((item) => item.id === element).length;
       const matchObj = listObj.find((obj) => obj.id === element);
       if (matchObj !== undefined) {
-        matchObj.trybeCount = count;
+        matchObj.trybeCount = 1;
         finalList.push(matchObj);
       }
     });
@@ -75,6 +109,8 @@ class ShoppingCart extends Component {
 
 ShoppingCart.propTypes = {
   location: PropTypes.shape,
+  shoppingListId: PropTypes.arrayOf(PropTypes.string),
+  shoppingProductObjs: PropTypes.arrayOf(PropTypes.shape),
 }.isRequired;
 
 export default ShoppingCart;
