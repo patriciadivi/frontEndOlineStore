@@ -11,23 +11,59 @@ class ShoppingCart extends Component {
     };
   }
 
-  renderCart = (listRender) => (
-    listRender.map((element) => (
-      <div key={ element.title }>
-        <img src={ element.thumbnail } alt={ element.title } />
-        <p
-          data-testid="shopping-cart-product-name"
-        >
-          {element.title}
-        </p>
-        <p
-          data-testid="shopping-cart-product-quantity"
-        >
-          {element.trybeCount}
-        </p>
-      </div>
-    ))
-  );
+  validateIncrement = (i, list) => {
+    list[i].trybeCount += 1;
+    this.setState({ finalProductList: list });
+  }
+
+  validateDecrement = (i, list) => {
+    if (list[i].trybeCount > 0) {
+      list[i].trybeCount -= 1;
+    }
+    this.setState({ finalProductList: list });
+  }
+
+  renderCart = (listRender) => {
+    if (listRender !== undefined) {
+      return listRender.map((element, i) => (
+        <div key={ element.title }>
+          <img src={ element.thumbnail } alt={ element.title } />
+          <p
+            data-testid="shopping-cart-product-name"
+          >
+            {element.title}
+          </p>
+          <p
+            data-testid="shopping-cart-product-quantity"
+          >
+            {element.trybeCount}
+          </p>
+          <button
+            data-testid="decrease-quantity"
+            value="-"
+            type="button"
+            onClick={ () => this.validateDecrement(i, listRender) }
+          >
+            {' '}
+            -
+            {' '}
+
+          </button>
+          <button
+            data-testid="increase-quantity"
+            value="+"
+            type="button"
+            onClick={ () => this.validateIncrement(i, listRender) }
+          >
+            {' '}
+            +
+            {' '}
+
+          </button>
+        </div>
+      ));
+    }
+  } ;
 
   setParams = (listId, listObj) => {
     const finalList = [];
@@ -47,10 +83,12 @@ class ShoppingCart extends Component {
 
   makeList = (finalList) => {
     const { shoppingListId, shoppingProductObjs } = this.props;
+    /* const { result } = this.state; */
     if (finalList.length > 0) {
       return this.renderCart(finalList);
     } if (finalList.length === 0) {
       const listReturn = this.setParams(shoppingListId, shoppingProductObjs);
+      console.log(listReturn);
       if (listReturn.length > 0) {
         return this.renderCart(listReturn);
       }
@@ -66,7 +104,7 @@ class ShoppingCart extends Component {
         <Header />
         <section>
           {shoppingListId.length === shoppingProductObjs.length
-            && this.makeList(finalProductList)}
+             && this.makeList(finalProductList)}
         </section>
       </div>
     );
