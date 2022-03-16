@@ -17,6 +17,13 @@ class CardDetails extends Component {
     this.getProduct();
   }
 
+  componentDidUpdate() {
+    const time = 2000;
+    setTimeout(() => {
+      this.getProduct();
+    }, time);
+  }
+
   getProduct = async () => {
     const {
       match: {
@@ -31,21 +38,37 @@ class CardDetails extends Component {
   render() {
     const { product, attributes } = this.state;
     const { title, thumbnail, price } = product;
+    const {
+      match: {
+        params,
+      },
+      btnAddToCart,
+    } = this.props;
     return (
       <div className="details-container">
         <SearchCategories />
-        <section datatestid="product-detail-link">
-          <h1 data-testid="product-detail-name">{`${title} - R$${price}`}</h1>
-          <img src={ thumbnail } alt={ title } />
-          <ul>
-            {attributes.map(({ name, value }) => (
-              <li key={ name } datatestid="product-detail-name">
-                {`${name} - ${value}`}
-              </li>
-            ))}
-          </ul>
-        </section>
-
+        {product.id === params.id
+        && (
+          <section datatestid="product-detail-link">
+            <h1 data-testid="product-detail-name">{`${title} - R$${price}`}</h1>
+            <img src={ thumbnail } alt={ title } />
+            <ul>
+              {attributes.map(({ name, value }) => (
+                <li key={ name } datatestid="product-detail-name">
+                  {`${name} - ${value}`}
+                </li>
+              ))}
+            </ul>
+            <button
+              data-testid="product-detail-add-to-cart"
+              type="button"
+              onClick={ btnAddToCart }
+              value={ product.id }
+            >
+              add ao carrinho
+            </button>
+          </section>
+        )}
       </div>
     );
   }

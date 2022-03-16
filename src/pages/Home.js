@@ -4,12 +4,14 @@ import SearchCategories from '../components/SearchCategories';
 
 class Home extends Component {
   render() {
-    const { shoppingListId, makeListId } = this.props;
+    const { shoppingListId, makeListId, addToCart, btnAddToCart } = this.props;
     return (
       <section>
         <SearchCategories
           shoppingListId={ shoppingListId }
           makeListId={ makeListId }
+          addToCart={ addToCart }
+          btnAddToCart={ btnAddToCart }
         />
         <div>
           <p data-testid="home-initial-message">

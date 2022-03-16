@@ -15,26 +15,12 @@ class SearchCategories extends Component {
       categories: [],
       id: '',
       list: [],
-      shoppingCartList: [],
     };
   }
 
   async componentDidMount() {
     const listOfCategories = await getCategories();
     this.setState({ categories: listOfCategories });
-  }
-
-  componentWillUnmount() {
-    const { makeListId } = this.props;
-    const { shoppingCartList } = this.state;
-    if (typeof (makeListId) === 'function') {
-      makeListId(shoppingCartList);
-    }
-  }
-
-  addToCart = async (item) => {
-    this.setState((prevState) => (
-      { shoppingCartList: [...prevState.shoppingCartList, item] }));
   }
 
   handleChange = async ({ target: { value } }) => {
@@ -44,13 +30,14 @@ class SearchCategories extends Component {
 
   render() {
     const { categories, id, list } = this.state;
+    const { btnAddToCart } = this.props;
     return (
       <div>
         <Header />
         <section>
           <div className="search-categories-container">
             <SearchBar
-              addToCart={ this.addToCart }
+              btnAddToCart={ btnAddToCart }
               categoryId={ id }
               listSearch={ list }
             />

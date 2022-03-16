@@ -16,13 +16,17 @@ class App extends Component {
     };
   }
 
-  makeListId = (listId) => {
-    this.setState({ shoppingListId: listId });
-    listId.forEach(async (productId) => {
-      const requestReturn = await getProductsFromId(productId);
-      this.setState((prevState) => (
-        { shoppingProductObjs: [...prevState.shoppingProductObjs, requestReturn] }));
-    });
+  addToCart = async (item) => {
+    const requestReturn = await getProductsFromId(item);
+    this.setState((prevState) => (
+      {
+        shoppingListId: [...prevState.shoppingListId, item],
+        shoppingProductObjs: [...prevState.shoppingProductObjs, requestReturn] }));
+  }
+
+  btnAddToCart = (event) => {
+    const { value } = event.target;
+    this.addToCart(value);
   }
 
   render() {
@@ -34,6 +38,8 @@ class App extends Component {
             <Home
               shoppingListId={ shoppingListId }
               makeListId={ this.makeListId }
+              addToCart={ this.addToCart }
+              btnAddToCart={ this.btnAddToCart }
             />
           </Route>
           <Route exact path="/ShoppingCart">
@@ -45,7 +51,9 @@ class App extends Component {
           <Route
             exact
             path="/carddetails/:id"
-            render={ (props) => <CardDetails { ...props } /> }
+            render={ (props) => (
+              <CardDetails { ...props } btnAddToCart={ this.btnAddToCart } />
+            ) }
           />
         </Switch>
       </BrowserRouter>
