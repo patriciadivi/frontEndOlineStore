@@ -23,55 +23,53 @@ class ShoppingCart extends Component {
     this.setState({ finalProductList: list });
   }
 
-  renderCart = (listRender) => {
-    if (listRender !== undefined) {
-      return listRender.map((element, i) => (
-        <div key={ element.title }>
-          <img src={ element.thumbnail } alt={ element.title } />
-          <p
-            data-testid="shopping-cart-product-name"
-          >
-            {element.title}
-          </p>
-          <p
-            data-testid="shopping-cart-product-quantity"
-          >
-            {element.trybeCount}
-          </p>
-          <button
-            data-testid="decrease-quantity"
-            value="-"
-            type="button"
-            onClick={ () => this.validateDecrement(i, listRender) }
-          >
-            {' '}
-            -
-            {' '}
+  renderCart = (listRender) => (
+    listRender.map((element, i) => (
+      <div key={ element.title }>
+        <img src={ element.thumbnail } alt={ element.title } />
+        <p
+          data-testid="shopping-cart-product-name"
+        >
+          {element.title}
+        </p>
+        <p
+          data-testid="shopping-cart-product-quantity"
+        >
+          {element.trybeCount}
+        </p>
+        <button
+          data-testid="product-decrease-quantity"
+          value="-"
+          type="button"
+          onClick={ () => this.validateDecrement(i, listRender) }
+        >
+          {' '}
+          -
+          {' '}
 
-          </button>
-          <button
-            data-testid="increase-quantity"
-            value="+"
-            type="button"
-            onClick={ () => this.validateIncrement(i, listRender) }
-          >
-            {' '}
-            +
-            {' '}
+        </button>
+        <button
+          data-testid="product-increase-quantity"
+          value="+"
+          type="button"
+          onClick={ () => this.validateIncrement(i, listRender) }
+        >
+          {' '}
+          +
+          {' '}
 
-          </button>
-        </div>
-      ));
-    }
-  } ;
+        </button>
+      </div>
+    ))
+  );
 
   setParams = (listId, listObj) => {
     const finalList = [];
     listId.forEach((element) => {
-      const count = listObj.filter((item) => item.id === element).length;
+      // const count = listObj.filter((item) => item.id === element).length;
       const matchObj = listObj.find((obj) => obj.id === element);
       if (matchObj !== undefined) {
-        matchObj.trybeCount = count;
+        matchObj.trybeCount = 1;
         finalList.push(matchObj);
       }
     });
@@ -113,6 +111,8 @@ class ShoppingCart extends Component {
 
 ShoppingCart.propTypes = {
   location: PropTypes.shape,
+  shoppingListId: PropTypes.arrayOf(PropTypes.string),
+  shoppingProductObjs: PropTypes.arrayOf(PropTypes.shape),
 }.isRequired;
 
 export default ShoppingCart;

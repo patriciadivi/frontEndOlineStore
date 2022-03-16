@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { getProductsFromId } from './services/api';
+import * as api from './services/api';
 import Home from './pages/Home';
 import ShoppingCart from './pages/ShoppingCart';
 import CardDetails from './pages/CardDetails';
@@ -11,26 +11,34 @@ class App extends Component {
     super();
 
     this.state = {
+      categories: [],
       shoppingListId: [],
       shoppingProductObjs: [],
     };
   }
 
+  async componentDidMount() {
+    const listOfCategories = await api.getCategories();
+    this.setState({ categories: listOfCategories });
+  }
+
   addToCart = async (item) => {
-    const requestReturn = await getProductsFromId(item);
+    const requestReturn = await api.getProductsFromCategoryAndQuery(item[0], undefined);
+    const obj = requestReturn.results.find((element) => element.id === item[1]);
     this.setState((prevState) => (
       {
-        shoppingListId: [...prevState.shoppingListId, item],
-        shoppingProductObjs: [...prevState.shoppingProductObjs, requestReturn] }));
+        shoppingListId: [...prevState.shoppingListId, item[1]],
+        shoppingProductObjs: [...prevState.shoppingProductObjs, obj] }));
   }
 
   btnAddToCart = (event) => {
     const { value } = event.target;
-    this.addToCart(value);
+    const arrayValue = value.split(' ');
+    this.addToCart(arrayValue);
   }
 
   render() {
-    const { shoppingListId, shoppingProductObjs } = this.state;
+    const { shoppingListId, shoppingProductObjs, categories } = this.state;
     return (
       <BrowserRouter>
         <Switch>
@@ -40,6 +48,7 @@ class App extends Component {
               makeListId={ this.makeListId }
               addToCart={ this.addToCart }
               btnAddToCart={ this.btnAddToCart }
+              categories={ categories }
             />
           </Route>
           <Route exact path="/ShoppingCart">
@@ -50,9 +59,14 @@ class App extends Component {
           </Route>
           <Route
             exact
-            path="/carddetails/:id"
+            path="/carddetails/:categoryid/:id"
             render={ (props) => (
-              <CardDetails { ...props } btnAddToCart={ this.btnAddToCart } />
+              <CardDetails
+                { ...props }
+                btnAddToCart={ this.btnAddToCart }
+                categories={ categories }
+                shoppingListId={ shoppingListId }
+              />
             ) }
           />
         </Switch>
