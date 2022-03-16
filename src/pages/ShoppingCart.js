@@ -81,10 +81,12 @@ class ShoppingCart extends Component {
 
   makeList = (finalList) => {
     const { shoppingListId, shoppingProductObjs } = this.props;
+    /* const { result } = this.state; */
     if (finalList.length > 0) {
       return this.renderCart(finalList);
     } if (finalList.length === 0) {
       const listReturn = this.setParams(shoppingListId, shoppingProductObjs);
+      console.log(listReturn);
       if (listReturn.length > 0) {
         return this.renderCart(listReturn);
       }
@@ -100,7 +102,7 @@ class ShoppingCart extends Component {
         <Header />
         <section>
           {shoppingListId.length === shoppingProductObjs.length
-            && this.makeList(finalProductList)}
+             && this.makeList(finalProductList)}
         </section>
       </div>
     );
