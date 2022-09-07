@@ -22,7 +22,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 - [Desenvolvimento](#Desenvolvimento)
 
-- [Desenvolvimento](#Desenvolvimento)
 - [O que foi desenvolvido](#Conheça o Projeto)
 
 
