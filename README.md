@@ -22,7 +22,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 - [Desenvolvimento](#Desenvolvimento)
 
-- [O que foi desenvolvido](#Conheça o Projeto)
+- [O que foi desenvolvido](#O que foi desenvolvido)
 
 
 
