@@ -1,4 +1,4 @@
-# 🚧 README em construção 🚧
+# 🚧 README em construção 🚧👩🏻‍💻
 
 <!-- Olá, Tryber!
 
@@ -15,7 +15,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 -->
 
-# Bem vindo ao repositório do projeto de Front-End Online Store!
+# Bem vindo ao repositório do projeto de Front-End Online Store! 👩🏻‍💻
 
 
 
@@ -44,7 +44,7 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
   * Instale as dependências:
     * `npm install`
   * Inicialize o projeto:
-    * `npm start` (uma nova página deve abrir no seu navegador com um texto simples)
+    * `npm start` (uma nova página deve abrir no seu navegador)
 
 3. Faça alguma alteração na aplicação 
   * Exemplo: `arquivoDeTeste.txt`
@@ -85,8 +85,8 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
 7. Adicione o projeto local ao seu repositório criado no 'PASSO 4'.
-  * Nesse passo vamos precisa da imagem do'PASSO 5', localize a abra do seu repositorio
-    * Rode os comando abaixo
+  * Nesse passo vamos precisa da imagem do 'PASSO 5', localize a abra do seu repositorio
+    * Rode os comando abaixo, de acordo com a sua GUIA mostrada no 'PASSO 5'
     * 1° comando. Exemplo: `git remote add origin git@github.com:patriciadivi/repositorioTeste.git`
     * 2° comando. Exemplo: `git branch -M main`
     * 3° comando. Exemplo: `git push -u origin main`
