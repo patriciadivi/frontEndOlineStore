@@ -21,7 +21,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 # Sumário
 
 - [Desenvolvimento](#Desenvolvimento)
-  - [Quer contribuir](#Como ter esse projeto em sua máquina)
+  - [Quer contribuir](#quer contribuir)
 
 - [Desenvolvimento](#desenvolvimento)
 
