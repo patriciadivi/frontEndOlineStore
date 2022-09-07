@@ -1,25 +1,12 @@
-# 🚧 README em construção 🚧👩🏻‍💻
-
-<!-- Olá, Tryber!
-
-Esse é apenas um arquivo inicial para o README do seu projeto.
-
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
-
 # Bem vindo ao repositório do projeto de Front-End Online Store! 👩🏻‍💻
 
-
-
-
+  <div align="center">
+    <video controls autoplay>
+      <source src="https://user-images.githubusercontent.com/38478917/189002606-efa934f4-fc39-4955-a558-816fe3b2c188.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+    </video>
+  </div>
+  
 # Desenvolvimento
 
 Neste projeto você foi desenvolvido uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo ao do mercado de trabalho. A partir dessas demandas, teremos uma aplicação onde os usuários poderão:
