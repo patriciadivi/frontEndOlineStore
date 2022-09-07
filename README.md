@@ -21,7 +21,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 # Sumário
 
 - [Desenvolvimento](#Desenvolvimento)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
+  - [Quer contribuir](#Como ter esse projeto em sua máquina)
 
 - [Desenvolvimento](#desenvolvimento)
 
@@ -33,3 +33,5 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 # O que foi desenvolvido
 123...
+
+# Como ter esse projeto em sua máquina
