@@ -34,6 +34,7 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
 
 # Como ter esse projeto em sua máquina
 1. Clone o repositório
+  * Abra o seu TERMINAL e digite o comando abaixo.
   * `git clone git@github.com:patriciadivi/frontEndOlineStore.git`
   * Entre na pasta do repositório que você acabou de clonar:
     * `cd frontEndOlineStore.git`
@@ -56,31 +57,38 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
   <div align="center">
     <img src="https://user-images.githubusercontent.com/38478917/188983072-db5702fb-bb5d-4835-9338-d0a0bb981741.png"/>
   </div>
-   * com o nome de sua preferência
+  
+    * Defina um nome ao seu Repositório
    <div align="center">
     <img src="https://user-images.githubusercontent.com/38478917/188986397-3f3177d7-9d13-414b-9b2b-089c3719e771.png"/>
-    <img src="https://user-images.githubusercontent.com/38478917/188986397-3f3177d7-9d13-414b-9b2b-089c3719e771.png"/>
+    <img src="https://user-images.githubusercontent.com/38478917/188987212-0ba26086-f06e-49a6-aaf9-0c7b1f9ed0c0.png"/>
    </div>
 
 5. Na Aba do seu Repositório
-  * Encontrei o campo abaixo.
+  * Encontrei o campo abaixo, deixe a guia aberta pois, vamos usa-la no 'PASSO 7'
   <div align="center">
     <img src="https://user-images.githubusercontent.com/38478917/188980734-6f857914-9c4a-4597-80f4-e40a55171343.png"/>
   </div>
-  * Crie um novo Repositorio com o nome de sua preferência
+  
 
-5. Adicione as mudanças ao _stage_ do Git e faça um `commit`
+6. Adicione as mudanças ao _stage_ do Git e faça um `commit`
+  * Voltei ao seu terminal
   * Verifique que as mudanças ainda não estão no _stage_
     * Exemplo: `git status` (devem aparecer listadas as novas alterações em vermelho)
-  * Adicione o arquivo alterado ao _stage_ do Git
+  * Adicione o arquivo alterado, realizado no 'PASSO 3' ao _stage_ do Git
       * Exemplo:
         * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
         * `git status` (devem aparecer listadas as novas alterações em verde)
   * Faça seus `commit`
       * Exemplo:
-        * `git commit -m 'cria componente de busca`
+        * `git commit -m 'feat:  Iniciando novo projeto 🚀`
         * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
 
-5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin main-group-XX-cria-campo-de-busca`
+7. Adicione o projeto local ao seu repositório criado no 'PASSO 4'.
+  * Nesse passo vamos precisa da imagem do'PASSO 5', localize a abra do seu repositorio
+    * Rode os comando abaixo
+    * 1° comando. Exemplo: `git remote add origin git@github.com:patriciadivi/repositorioTeste.git`
+    * 2° comando. Exemplo: `git branch -M main`
+    * 3° comando. Exemplo: `git push -u origin main`
+  * AGORA É SÓ ATUALIZAR A PÁGINA E SER FELIZ! 😊
 
