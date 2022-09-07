@@ -21,13 +21,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 
 
 # Desenvolvimento
-12233...
-
-
-# O que foi desenvolvido
-123...
-
-# Como ter esse projeto em sua máquina
 
 Neste projeto você foi desenvolvido uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo ao do mercado de trabalho. A partir dessas demandas, teremos uma aplicação onde os usuários poderão:
   - Buscar produtos por termos e categorias a partir da _API do Mercado Livre_;
@@ -35,3 +28,10 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
   - Visualizar detalhes e avaliações prévias de um ou mais produtos;
 
 ---
+
+# O que foi desenvolvido
+123...
+
+# Como ter esse projeto em sua máquina
+
+
