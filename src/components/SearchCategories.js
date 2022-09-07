@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { SearchComponents, SidebarComponents } from '../styles/SearchComponents';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class SearchCategories extends Component {
@@ -28,13 +29,13 @@ class SearchCategories extends Component {
   makeCard = (list, funcAdd) => list.map((element) => (
     <div key={ element.id }>
       <Link to={ `/carddetails/${element.category_id}/${element.id}` }>
-        <div data-testid="product-detail-link">
+        <aside data-testid="product-detail-link">
           <div data-testid="product">
             <p>{element.title}</p>
             <img src={ element.thumbnail } alt={ element.title } />
             <p>{element.price}</p>
           </div>
-        </div>
+        </aside>
       </Link>
       <div>
         <button
@@ -43,7 +44,7 @@ class SearchCategories extends Component {
           onClick={ funcAdd }
           value={ `${element.category_id} ${element.id}` }
         >
-          add ao carrinho
+          Adicione ao carrinho
         </button>
       </div>
     </div>
@@ -76,7 +77,7 @@ class SearchCategories extends Component {
     const { query } = this.state;
     const { btnAddToCart, categories } = this.props;
     return (
-      <div>
+      <SearchComponents>
         <section>
           <div className="search-categories-container">
             <input
@@ -85,6 +86,7 @@ class SearchCategories extends Component {
               data-testid="query-input"
               value={ query }
               onChange={ this.handleQuery }
+              placeholder="Digite o nome do produto"
             />
             <button
               className="button"
@@ -95,7 +97,7 @@ class SearchCategories extends Component {
               Pesquisar
             </button>
           </div>
-          <div className="sidebar">
+          <SidebarComponents>
             { categories.length > 0
               && (
                 categories.map((category) => (
@@ -115,10 +117,12 @@ class SearchCategories extends Component {
                   </label>
                 ))
               )}
-          </div>
-          {this.checkComplete(btnAddToCart)}
+          </SidebarComponents>
+          <aside>
+            {this.checkComplete(btnAddToCart)}
+          </aside>
         </section>
-      </div>
+      </SearchComponents>
     );
   }
 }

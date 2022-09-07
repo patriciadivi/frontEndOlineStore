@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { CardComponents } from '../styles/CardComponents';
 import Header from '../components/Header';
 
 class ShoppingCart extends Component {
@@ -32,11 +33,11 @@ class ShoppingCart extends Component {
         >
           {element.title}
         </p>
-        <p
+        <span
           data-testid="shopping-cart-product-quantity"
         >
           {element.trybeCount}
-        </p>
+        </span>
         <button
           data-testid="product-decrease-quantity"
           value="-"
@@ -98,13 +99,13 @@ class ShoppingCart extends Component {
     const { shoppingListId, shoppingProductObjs } = this.props;
     const { finalProductList } = this.state;
     return (
-      <div>
+      <CardComponents>
         <Header />
         <section>
           {shoppingListId.length === shoppingProductObjs.length
              && this.makeList(finalProductList)}
         </section>
-      </div>
+      </CardComponents>
     );
   }
 }

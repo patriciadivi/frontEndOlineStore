@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchCategories from '../components/SearchCategories';
+import { PHome } from '../styles/PHome';
 import Header from '../components/Header';
 
 class Home extends Component {
@@ -19,11 +20,11 @@ class Home extends Component {
             btnAddToCart={ btnAddToCart }
             categories={ categories }
           />
-          <div>
+          <PHome>
             <p data-testid="home-initial-message">
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>
-          </div>
+          </PHome>
         </section>
       </div>
     );
