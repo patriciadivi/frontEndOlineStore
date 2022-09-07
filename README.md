@@ -18,14 +18,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 # Bem vindo ao repositório do projeto de Front-End Online Store!
 
 
-# Sumário
-
-- [Desenvolvimento](#Desenvolvimento)
-- [Projeto](#Como ter esse projeto em sua maquina)
-  - [Quer contribuir](#quer contribuir)
-
-- [Desenvolvimento](#desenvolvimento)
-
 
 
 # Desenvolvimento
@@ -36,3 +28,10 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 123...
 
 # Como ter esse projeto em sua máquina
+
+Neste projeto você foi desenvolvido uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvendo em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_, em um cenário mais próximo ao do mercado de trabalho. A partir dessas demandas, teremos uma aplicação onde os usuários poderão:
+  - Buscar produtos por termos e categorias a partir da _API do Mercado Livre_;
+  - Interagir com os produtos buscados de modo a adicioná-los em um carrinho de compras em diferentes quantidades;
+  - Visualizar detalhes e avaliações prévias de um ou mais produtos;
+
+---
