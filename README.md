@@ -30,5 +30,5 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 12233...
 
 
-# Conheça o Projeto
+# O que foi desenvolvido
 123...
