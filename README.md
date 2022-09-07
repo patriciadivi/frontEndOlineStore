@@ -14,3 +14,10 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 
 -->
+
+# Bem vindo ao repositório do projeto de Front-End Online Store!
+
+
+# Sumário
+
+ - [O que foi desenvolvido](#Conheça o Projeto)
