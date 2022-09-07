@@ -52,7 +52,10 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
  
 4. Criando uma Repositorio no seu GitHub
   * Abra seu GitHub
-  * Crie um novo Repositório com o nome de sua preferência
+  * * Crie um novo Repositório com o nome de sua preferência
+  <div align="center">
+    <img src="https://user-images.githubusercontent.com/38478917/188983072-db5702fb-bb5d-4835-9338-d0a0bb981741.png"/>
+  </div>
 
 5. Na Aba do seu Repositório
   * Encontrei o campo abaixo.
