@@ -21,8 +21,9 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 # Sumário
 
 - [Desenvolvimento](#Desenvolvimento)
+  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
 
-- [O que foi desenvolvido](#O que foi desenvolvido)
+- [Desenvolvimento](#desenvolvimento)
 
 
 
