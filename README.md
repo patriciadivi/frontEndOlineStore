@@ -1,11 +1,10 @@
 # Bem vindo ao repositório do projeto de Front-End Online Store! 👩🏻‍💻
 
   <div align="center">
-    <video controls autoplay>
-      <source src="https://user-images.githubusercontent.com/38478917/189002606-efa934f4-fc39-4955-a558-816fe3b2c188.mp4" type="video/mp4">
-     Your browser does not support the video tag.
-    </video>
+    <img src="https://user-images.githubusercontent.com/38478917/189005587-7f4133e4-aec6-4193-81d2-dfb126431579.gif"/>
   </div>
+  
+ ---
   
 # Desenvolvimento
 
@@ -15,9 +14,6 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
   - Visualizar detalhes e avaliações prévias de um ou mais produtos;
 
 ---
-
-# O que foi desenvolvido
-123...
 
 # Como ter esse projeto em sua máquina
 1. Clone o repositório
@@ -51,6 +47,7 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
     <img src="https://user-images.githubusercontent.com/38478917/188987212-0ba26086-f06e-49a6-aaf9-0c7b1f9ed0c0.png"/>
    </div>
 
+
 5. Na Aba do seu Repositório
   * Encontrei o campo abaixo, deixe a guia aberta pois, vamos usa-la no 'PASSO 7'
   <div align="center">
@@ -79,3 +76,7 @@ Neste projeto você foi desenvolvido uma versão simplificada, sem persistência
     * 3° comando. Exemplo: `git push -u origin main`
   * AGORA É SÓ ATUALIZAR A PÁGINA E SER FELIZ! 😊
 
+---
+<div align="center">
+    <h1>Obrigada pela visita e te espero logo! 😊👩🏻‍💻<h1/>
+</div>
