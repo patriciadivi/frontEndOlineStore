@@ -1,4 +1,4 @@
-# Bem vindo ao repositório Front-End Online Store! 👩🏻‍💻
+# Bem vindo ao Repositório Front-End Online Store! 👩🏻‍💻
 
   <div align="center">
     <img src="https://user-images.githubusercontent.com/38478917/189005587-7f4133e4-aec6-4193-81d2-dfb126431579.gif"/>
