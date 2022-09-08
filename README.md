@@ -2,6 +2,8 @@
 
   <div align="center">
     <img src="https://user-images.githubusercontent.com/38478917/189005587-7f4133e4-aec6-4193-81d2-dfb126431579.gif"/>
+  
+  <a href="https://frontendonlinestore-patriciadivi.netlify.app/" target="_blank">Acesse a Página</a>
   </div>
   
  ---
