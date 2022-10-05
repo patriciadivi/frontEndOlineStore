@@ -56,6 +56,7 @@ export const SearchComponents = styled.div`
           aside {
             width: 180px;
             max-height: 70%;
+            margin-left: 0.4rem;
 
             div {
               p {

@@ -102,8 +102,10 @@ class ShoppingCart extends Component {
       <CardComponents>
         <Header />
         <section>
-          {shoppingListId.length === shoppingProductObjs.length
+          <div>
+            {shoppingListId.length === shoppingProductObjs.length
              && this.makeList(finalProductList)}
+          </div>
         </section>
       </CardComponents>
     );
